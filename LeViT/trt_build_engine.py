@@ -49,5 +49,5 @@ def load_engine(engine_path):
     return engine
 
 if __name__ == '__main__':
-    setup_engine(onnx_path = "./onnx_models/levit_128_onnx.onnx",trtfile = "./trt_plans/model_128.plan")
+    setup_engine(onnx_path = "./onnx_models/model_128S.onnx",trtfile = "./trt_plans/model_128S.plan")
 

@@ -26,5 +26,5 @@ def export_onnx_model(model_name,onnx_path = "./onnx_models/my_model_onnx.onnx")
                                 'output' : {0 : 'batch_size'}})  # whether to execute constant folding for optimization)
 
 if __name__ == '__main__':
-    export_onnx_model(model_name,onnx_path = "./onnx_models/my_model_onnx.onnx")
+    export_onnx_model(model_name = "128S",onnx_path = "./onnx_models/model_128S.onnx")
 
