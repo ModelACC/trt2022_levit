@@ -1,6 +1,6 @@
 # trt2022_levit
 ## 总述
-- 模型名称：LeViT
+- 模型名称：LeViT， https://github.com/facebookresearch/LeViT. 
 ## 原始模型
 ### 1. 模型简介
 - 我们小组选择优化的模型是来自于FaceBook Research的LeViT, 一种基于Transformer的用于快速推理图像分类的混合模型。该模型在推理精度上和运行速度上取得了较好的平衡。在同等精度之下，该模型相比于其他视觉Transformer的SOTA模型例如Visual Transformer，Bottleneck transformer和pyramid vision transformer能有近5倍的速度提升。相比于其他Token-to-token ViT模型，LeViT也有更少的参数和FLOPs。因此，LeViT是一个相对较为轻量化的模型，其较好的性能表现也保证了该模型较好的实用性。
