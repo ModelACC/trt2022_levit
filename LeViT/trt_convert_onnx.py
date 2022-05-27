@@ -4,15 +4,15 @@ import torch
 def export_onnx_model(model_name,onnx_path = "./onnx_models/my_model_onnx.onnx"):
     input_tensor = torch.randn(16,3,224,224)
     if(model_name == "128"):
-        my_model = levit.LeViT_128(pretrained=True,distillation=True)
+        my_model = levit.LeViT_128(pretrained=True,distillation=True).eval()
     if(model_name == "128S"):
-        my_model = levit.LeViT_128S(pretrained=True,distillation=True)
+        my_model = levit.LeViT_128S(pretrained=True,distillation=True).eval()
     if(model_name == "192"):
-        my_model = levit.LeViT_192(pretrained=True,distillation=True)
+        my_model = levit.LeViT_192(pretrained=True,distillation=True).eval()
     if(model_name == "256"):
-        my_model = levit.LeViT_256(pretrained=True,distillation=True)
+        my_model = levit.LeViT_256(pretrained=True,distillation=True).eval()
     if(model_name == "384"):
-        my_model = levit.LeViT_384(pretrained=True,distillation=True)
+        my_model = levit.LeViT_384(pretrained=True,distillation=True).eval()
 
     torch.onnx.export(my_model,               # model being run
                   input_tensor,                         # model input (or a tuple for multiple inputs)
