@@ -92,7 +92,8 @@ for device in ['cuda:0', 'cpu']:
         if device == 'cpu':
             batch_size = 16
         else:
-            batch_size = batch_size0
+            # batch_size = batch_size0
+            batch_size = 4
             torch.cuda.empty_cache()
         inputs = torch.randn(batch_size, 3, resolution,
                              resolution, device=device)

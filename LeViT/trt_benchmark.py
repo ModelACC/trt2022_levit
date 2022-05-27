@@ -8,18 +8,18 @@ from time import time_ns
 from cuda import cudart 
 
 def speed_test_pytorch(model_name,batch_size,iterations):
+    torch.cuda.empty_cache()
     if(model_name == "128"):
-        my_model = levit.LeViT_128(pretrained=True,distillation=True).eval()
+        my_model = levit.LeViT_128(pretrained=True,distillation=True).cuda().eval()
     if(model_name == "128S"):
-        my_model = levit.LeViT_128S(pretrained=True,distillation=True).eval()
+        my_model = levit.LeViT_128S(pretrained=True,distillation=True).cuda().eval()
     if(model_name == "192"):
-        my_model = levit.LeViT_192(pretrained=True,distillation=True).eval()
+        my_model = levit.LeViT_192(pretrained=True,distillation=True).cuda().eval()
     if(model_name == "256"):
-        my_model = levit.LeViT_256(pretrained=True,distillation=True).eval()
+        my_model = levit.LeViT_256(pretrained=True,distillation=True).cuda().eval()
     if(model_name == "384"):
-        my_model = levit.LeViT_384(pretrained=True,distillation=True).eval()
+        my_model = levit.LeViT_384(pretrained=True,distillation=True).cuda().eval()
     
-    my_model = my_model.cuda()
     
     input_tensor = torch.randn((batch_size,3,224,224)).cuda()
     t0 = time_ns()
@@ -81,6 +81,6 @@ def speed_test_trt(onnx_path,engine_path,batch_size,iterations):
 
 
 if __name__ == "__main__":
-    speed_test_pytorch("128S",16,100)
     speed_test_trt(onnx_path="",engine_path="./trt_plans/model_128S.plan",batch_size=16,iterations=100)
+    speed_test_pytorch("128S",16,100)
     speed_test_onnx(onnx_path="onnx_models/model_128S.onnx",batch_size=16,iterations=100)
