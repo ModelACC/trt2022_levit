@@ -37,6 +37,7 @@ def inference(engine,batch_size,input_data):
     cudart.cudaFree(outputDevice)
     return outputHost
 
+# not finished 
 class img_dataset(Dataset):
     def build_transform(self):
         IMAGENET_DEFAULT_MEAN = (0.485, 0.456, 0.406)
@@ -70,6 +71,7 @@ class img_dataset(Dataset):
         ret_numpy_img = self.transform(ret_numpy_img)
         return (idx,ret_numpy_img)
 
+# not finished 
 def evaluate(dataset_path, engine_path):
     batch_size = 16
     engine = trt_build_engine.load_engine(engine_path)
@@ -90,7 +92,7 @@ def evaluate(dataset_path, engine_path):
     #     imgs = imgs.numpy()
     #     print(np.shape(imgs))
     #     ret = inference(engine,batch_size,imgs.astype(np.float16))
-    #     print(ret)
+    #     print(ret)    
 
 if __name__ =='__main__':
     evaluate("../../data/img/","./trt_plans/model_128S.plan")
