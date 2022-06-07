@@ -1,0 +1,622 @@
+&&&& RUNNING TensorRT.trtexec [TensorRT v8204] # trtexec --loadEngine=./trt_plans/model_128S.plan --shapes=input:16x3x224x224 --verbose --dumpProfile --exportLayerInfo=./detailed_report.txt
+[05/26/2022-18:09:28] [I] === Model Options ===
+[05/26/2022-18:09:28] [I] Format: *
+[05/26/2022-18:09:28] [I] Model: 
+[05/26/2022-18:09:28] [I] Output:
+[05/26/2022-18:09:28] [I] === Build Options ===
+[05/26/2022-18:09:28] [I] Max batch: explicit batch
+[05/26/2022-18:09:28] [I] Workspace: 16 MiB
+[05/26/2022-18:09:28] [I] minTiming: 1
+[05/26/2022-18:09:28] [I] avgTiming: 8
+[05/26/2022-18:09:28] [I] Precision: FP32
+[05/26/2022-18:09:28] [I] Calibration: 
+[05/26/2022-18:09:28] [I] Refit: Disabled
+[05/26/2022-18:09:28] [I] Sparsity: Disabled
+[05/26/2022-18:09:28] [I] Safe mode: Disabled
+[05/26/2022-18:09:28] [I] DirectIO mode: Disabled
+[05/26/2022-18:09:28] [I] Restricted mode: Disabled
+[05/26/2022-18:09:28] [I] Save engine: 
+[05/26/2022-18:09:28] [I] Load engine: ./trt_plans/model_128S.plan
+[05/26/2022-18:09:28] [I] Profiling verbosity: 0
+[05/26/2022-18:09:28] [I] Tactic sources: Using default tactic sources
+[05/26/2022-18:09:28] [I] timingCacheMode: local
+[05/26/2022-18:09:28] [I] timingCacheFile: 
+[05/26/2022-18:09:28] [I] Input(s)s format: fp32:CHW
+[05/26/2022-18:09:28] [I] Output(s)s format: fp32:CHW
+[05/26/2022-18:09:28] [I] Input build shape: input=16x3x224x224+16x3x224x224+16x3x224x224
+[05/26/2022-18:09:28] [I] Input calibration shapes: model
+[05/26/2022-18:09:28] [I] === System Options ===
+[05/26/2022-18:09:28] [I] Device: 0
+[05/26/2022-18:09:28] [I] DLACore: 
+[05/26/2022-18:09:28] [I] Plugins:
+[05/26/2022-18:09:28] [I] === Inference Options ===
+[05/26/2022-18:09:28] [I] Batch: Explicit
+[05/26/2022-18:09:28] [I] Input inference shape: input=16x3x224x224
+[05/26/2022-18:09:28] [I] Iterations: 10
+[05/26/2022-18:09:28] [I] Duration: 3s (+ 200ms warm up)
+[05/26/2022-18:09:28] [I] Sleep time: 0ms
+[05/26/2022-18:09:28] [I] Idle time: 0ms
+[05/26/2022-18:09:28] [I] Streams: 1
+[05/26/2022-18:09:28] [I] ExposeDMA: Disabled
+[05/26/2022-18:09:28] [I] Data transfers: Enabled
+[05/26/2022-18:09:28] [I] Spin-wait: Disabled
+[05/26/2022-18:09:28] [I] Multithreading: Disabled
+[05/26/2022-18:09:28] [I] CUDA Graph: Disabled
+[05/26/2022-18:09:28] [I] Separate profiling: Disabled
+[05/26/2022-18:09:28] [I] Time Deserialize: Disabled
+[05/26/2022-18:09:28] [I] Time Refit: Disabled
+[05/26/2022-18:09:28] [I] Skip inference: Disabled
+[05/26/2022-18:09:28] [I] Inputs:
+[05/26/2022-18:09:28] [I] === Reporting Options ===
+[05/26/2022-18:09:28] [I] Verbose: Enabled
+[05/26/2022-18:09:28] [I] Averages: 10 inferences
+[05/26/2022-18:09:28] [I] Percentile: 99
+[05/26/2022-18:09:28] [I] Dump refittable layers:Disabled
+[05/26/2022-18:09:28] [I] Dump output: Disabled
+[05/26/2022-18:09:28] [I] Profile: Enabled
+[05/26/2022-18:09:28] [I] Export timing to JSON file: 
+[05/26/2022-18:09:28] [I] Export output to JSON file: 
+[05/26/2022-18:09:28] [I] Export profile to JSON file: 
+[05/26/2022-18:09:28] [I] 
+[05/26/2022-18:09:29] [I] === Device Information ===
+[05/26/2022-18:09:29] [I] Selected Device: NVIDIA GeForce RTX 3050 Ti Laptop GPU
+[05/26/2022-18:09:29] [I] Compute Capability: 8.6
+[05/26/2022-18:09:29] [I] SMs: 20
+[05/26/2022-18:09:29] [I] Compute Clock Rate: 1.185 GHz
+[05/26/2022-18:09:29] [I] Device Global Memory: 4095 MiB
+[05/26/2022-18:09:29] [I] Shared Memory per SM: 100 KiB
+[05/26/2022-18:09:29] [I] Memory Bus Width: 128 bits (ECC disabled)
+[05/26/2022-18:09:29] [I] Memory Clock Rate: 5.501 GHz
+[05/26/2022-18:09:29] [I] 
+[05/26/2022-18:09:29] [I] TensorRT version: 8.2.4
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::BatchTilePlugin_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::BatchedNMS_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::BatchedNMSDynamic_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::CoordConvAC version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::CropAndResize version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::CropAndResizeDynamic version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::DecodeBbox3DPlugin version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::DetectionLayer_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::EfficientNMS_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::EfficientNMS_ONNX_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::EfficientNMS_Explicit_TF_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::EfficientNMS_Implicit_TF_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::FlattenConcat_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::GenerateDetection_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::GridAnchor_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::GridAnchorRect_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::InstanceNormalization_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::LReLU_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::MultilevelCropAndResize_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::MultilevelProposeROI_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::NMS_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::NMSDynamic_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::Normalize_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::PillarScatterPlugin version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::PriorBox_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::ProposalLayer_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::Proposal version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::ProposalDynamic version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::PyramidROIAlign_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::Region_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::Reorg_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::ResizeNearest_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::RPROI_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::ScatterND version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::SpecialSlice_TRT version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::Split version 1
+[05/26/2022-18:09:29] [V] [TRT] Registered plugin creator - ::VoxelGeneratorPlugin version 1
+[05/26/2022-18:09:29] [I] [TRT] [MemUsageChange] Init CUDA: CPU +455, GPU +0, now: CPU 484, GPU 966 (MiB)
+[05/26/2022-18:09:29] [I] [TRT] Loaded engine size: 16 MiB
+[05/26/2022-18:09:30] [V] [TRT] Using cublasLt as a tactic source
+[05/26/2022-18:09:30] [I] [TRT] [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +850, GPU +368, now: CPU 1339, GPU 1351 (MiB)
+[05/26/2022-18:09:30] [V] [TRT] Using cuDNN as a tactic source
+[05/26/2022-18:09:30] [I] [TRT] [MemUsageChange] Init cuDNN: CPU +127, GPU +56, now: CPU 1466, GPU 1407 (MiB)
+[05/26/2022-18:09:30] [V] [TRT] Deserialization required 1110324 microseconds.
+[05/26/2022-18:09:30] [I] [TRT] [MemUsageChange] TensorRT-managed allocation in engine deserialization: CPU +0, GPU +15, now: CPU 0, GPU 15 (MiB)
+[05/26/2022-18:09:30] [I] Engine loaded in 1.634 sec.
+[05/26/2022-18:09:30] [I] [TRT] [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 1449, GPU 1389 (MiB)
+[05/26/2022-18:09:30] [I] [TRT] The profiling verbosity was set to ProfilingVerbosity::kLAYER_NAMES_ONLY when the engine was built, so only the layer names will be returned. Rebuild the engine with ProfilingVerbosity::kDETAILED to get more verbose layer information.
+[05/26/2022-18:09:30] [V] [TRT] Using cublasLt as a tactic source
+[05/26/2022-18:09:30] [I] [TRT] [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +10, now: CPU 1449, GPU 1399 (MiB)
+[05/26/2022-18:09:30] [V] [TRT] Using cuDNN as a tactic source
+[05/26/2022-18:09:30] [I] [TRT] [MemUsageChange] Init cuDNN: CPU +0, GPU +8, now: CPU 1449, GPU 1407 (MiB)
+[05/26/2022-18:09:30] [V] [TRT] Total per-runner device persistent memory is 1740288
+[05/26/2022-18:09:30] [V] [TRT] Total per-runner host persistent memory is 30976
+[05/26/2022-18:09:30] [V] [TRT] Allocated activation device memory of size 18967040
+[05/26/2022-18:09:30] [I] [TRT] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +20, now: CPU 0, GPU 35 (MiB)
+[05/26/2022-18:09:30] [I] Using random values for input input
+[05/26/2022-18:09:30] [I] Created input binding for input with dimensions 16x3x224x224
+[05/26/2022-18:09:30] [I] Using random values for output output
+[05/26/2022-18:09:30] [I] Created output binding for output with dimensions 16x1000
+[05/26/2022-18:09:30] [I] Starting inference
+[05/26/2022-18:09:34] [I] Warmup completed 1 queries over 200 ms
+[05/26/2022-18:09:34] [I] Timing trace has 208 queries over 1.97843 s
+[05/26/2022-18:09:34] [I] 
+[05/26/2022-18:09:34] [I] === Trace details ===
+[05/26/2022-18:09:34] [I] Trace averages of 10 runs:
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 8.14873 ms - Host latency: 9.41555 ms (end to end 9.48821 ms, enqueue 9.43878 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 7.73364 ms - Host latency: 8.90042 ms (end to end 8.96531 ms, enqueue 8.91018 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.70299 ms - Host latency: 7.83579 ms (end to end 7.891 ms, enqueue 7.8687 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.5448 ms - Host latency: 7.65363 ms (end to end 7.70959 ms, enqueue 7.66973 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.61406 ms - Host latency: 7.76569 ms (end to end 7.8363 ms, enqueue 7.80684 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.66536 ms - Host latency: 7.89949 ms (end to end 7.96549 ms, enqueue 7.93352 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.85065 ms - Host latency: 8.02034 ms (end to end 8.09941 ms, enqueue 8.06747 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.75924 ms - Host latency: 7.89976 ms (end to end 7.96531 ms, enqueue 7.92926 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.6823 ms - Host latency: 7.81315 ms (end to end 7.87257 ms, enqueue 7.84462 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.61177 ms - Host latency: 7.75525 ms (end to end 7.82451 ms, enqueue 7.78323 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.80562 ms - Host latency: 7.9988 ms (end to end 8.08547 ms, enqueue 8.04416 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.68594 ms - Host latency: 7.81414 ms (end to end 7.87256 ms, enqueue 7.83018 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.59167 ms - Host latency: 7.77561 ms (end to end 7.84402 ms, enqueue 7.80505 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 6.61865 ms - Host latency: 7.76885 ms (end to end 7.82385 ms, enqueue 7.80166 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 11.607 ms - Host latency: 13.9272 ms (end to end 14.0769 ms, enqueue 13.8567 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 10.9459 ms - Host latency: 13.8579 ms (end to end 14.0736 ms, enqueue 13.7163 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 8.52632 ms - Host latency: 10.6102 ms (end to end 10.7285 ms, enqueue 10.601 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 11.1676 ms - Host latency: 13.092 ms (end to end 13.2129 ms, enqueue 13.0205 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 8.4804 ms - Host latency: 10.6117 ms (end to end 10.7607 ms, enqueue 10.6465 ms)
+[05/26/2022-18:09:34] [I] Average on 10 runs - GPU latency: 8.62964 ms - Host latency: 10.5967 ms (end to end 10.7256 ms, enqueue 10.6355 ms)
+[05/26/2022-18:09:34] [I] 
+[05/26/2022-18:09:34] [I] === Performance summary ===
+[05/26/2022-18:09:34] [I] Throughput: 105.134 qps
+[05/26/2022-18:09:34] [I] Latency: min = 7.21924 ms, max = 23.2815 ms, mean = 9.41407 ms, median = 8.09473 ms, percentile(99%) = 19.2207 ms
+[05/26/2022-18:09:34] [I] End-to-End Host Latency: min = 7.27222 ms, max = 23.5103 ms, mean = 9.50697 ms, median = 8.16168 ms, percentile(99%) = 19.4236 ms
+[05/26/2022-18:09:34] [I] Enqueue Time: min = 7.24634 ms, max = 23.2275 ms, mean = 9.42372 ms, median = 8.1098 ms, percentile(99%) = 19.1694 ms
+[05/26/2022-18:09:34] [I] H2D Latency: min = 1.07251 ms, max = 3.53882 ms, mean = 1.48936 ms, median = 1.16425 ms, percentile(99%) = 3.45801 ms
+[05/26/2022-18:09:34] [I] GPU Compute Time: min = 6.07739 ms, max = 20.2537 ms, mean = 7.90404 ms, median = 6.89099 ms, percentile(99%) = 16.7844 ms
+[05/26/2022-18:09:34] [I] D2H Latency: min = 0.0114746 ms, max = 0.163818 ms, mean = 0.0206686 ms, median = 0.0134277 ms, percentile(99%) = 0.147705 ms
+[05/26/2022-18:09:34] [I] Total Host Walltime: 1.97843 s
+[05/26/2022-18:09:34] [I] Total GPU Compute Time: 1.64404 s
+[05/26/2022-18:09:34] [I] Explanations of the performance metrics are printed in the verbose logs.
+[05/26/2022-18:09:34] [V] 
+[05/26/2022-18:09:34] [V] === Explanations of the performance metrics ===
+[05/26/2022-18:09:34] [V] Total Host Walltime: the host walltime from when the first query (after warmups) is enqueued to when the last query is completed.
+[05/26/2022-18:09:34] [V] GPU Compute Time: the GPU latency to execute the kernels for a query.
+[05/26/2022-18:09:34] [V] Total GPU Compute Time: the summation of the GPU Compute Time of all the queries. If this is significantly shorter than Total Host Walltime, the GPU may be under-utilized because of host-side overheads or data transfers.
+[05/26/2022-18:09:34] [V] Throughput: the observed throughput computed by dividing the number of queries by the Total Host Walltime. If this is significantly lower than the reciprocal of GPU Compute Time, the GPU may be under-utilized because of host-side overheads or data transfers.
+[05/26/2022-18:09:34] [V] Enqueue Time: the host latency to enqueue a query. If this is longer than GPU Compute Time, the GPU may be under-utilized.
+[05/26/2022-18:09:34] [V] H2D Latency: the latency for host-to-device data transfers for input tensors of a single query.
+[05/26/2022-18:09:34] [V] D2H Latency: the latency for device-to-host data transfers for output tensors of a single query.
+[05/26/2022-18:09:34] [V] Latency: the summation of H2D Latency, GPU Compute Time, and D2H Latency. This is the latency to infer a single query.
+[05/26/2022-18:09:34] [V] End-to-End Host Latency: the duration from when the H2D of a query is called to when the D2H of the same query is completed, which includes the latency to wait for the completion of the previous query. This is the latency of a query if multiple queries are enqueued consecutively.
+[05/26/2022-18:09:34] [I] 
+[05/26/2022-18:09:34] [I] 
+[05/26/2022-18:09:34] [I] === Profile (209 iterations ) ===
+[05/26/2022-18:09:34] [I]                                                                                                    Layer   Time (ms)   Avg. Time (ms)   Time %
+[05/26/2022-18:09:34] [I]                                                        onnx::MatMul_1172 + (Unnamed Layer* 23) [Shuffle]        0.64           0.0030      0.0
+[05/26/2022-18:09:34] [I]                                                        onnx::MatMul_1176 + (Unnamed Layer* 97) [Shuffle]        0.51           0.0024      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1177 + (Unnamed Layer* 120) [Shuffle]        0.65           0.0031      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1178 + (Unnamed Layer* 144) [Shuffle]        0.58           0.0028      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1179 + (Unnamed Layer* 173) [Shuffle]        0.61           0.0029      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1183 + (Unnamed Layer* 247) [Shuffle]        1.07           0.0051      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1184 + (Unnamed Layer* 270) [Shuffle]        1.98           0.0095      0.1
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1185 + (Unnamed Layer* 294) [Shuffle]        1.21           0.0058      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1186 + (Unnamed Layer* 323) [Shuffle]        0.63           0.0030      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1192 + (Unnamed Layer* 433) [Shuffle]        0.66           0.0032      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1198 + (Unnamed Layer* 492) [Shuffle]        5.79           0.0277      0.2
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1199 + (Unnamed Layer* 515) [Shuffle]        0.52           0.0025      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1200 + (Unnamed Layer* 540) [Shuffle]        0.52           0.0025      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1201 + (Unnamed Layer* 570) [Shuffle]        0.51           0.0024      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1205 + (Unnamed Layer* 645) [Shuffle]        0.56           0.0027      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1206 + (Unnamed Layer* 669) [Shuffle]        0.65           0.0031      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1207 + (Unnamed Layer* 694) [Shuffle]        0.81           0.0039      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1208 + (Unnamed Layer* 724) [Shuffle]        1.32           0.0063      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1212 + (Unnamed Layer* 799) [Shuffle]        3.35           0.0160      0.1
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1213 + (Unnamed Layer* 823) [Shuffle]        1.41           0.0067      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1214 + (Unnamed Layer* 848) [Shuffle]        0.91           0.0044      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1215 + (Unnamed Layer* 878) [Shuffle]        0.85           0.0041      0.0
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1219 + (Unnamed Layer* 953) [Shuffle]        2.71           0.0130      0.1
+[05/26/2022-18:09:34] [I]                                                       onnx::MatMul_1220 + (Unnamed Layer* 977) [Shuffle]        0.51           0.0024      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1221 + (Unnamed Layer* 1002) [Shuffle]        0.49           0.0023      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1222 + (Unnamed Layer* 1032) [Shuffle]        1.19           0.0057      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1228 + (Unnamed Layer* 1143) [Shuffle]        1.06           0.0051      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1234 + (Unnamed Layer* 1202) [Shuffle]        0.99           0.0047      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1235 + (Unnamed Layer* 1225) [Shuffle]        0.95           0.0045      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1236 + (Unnamed Layer* 1250) [Shuffle]        2.25           0.0108      0.1
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1237 + (Unnamed Layer* 1280) [Shuffle]        2.06           0.0099      0.1
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1241 + (Unnamed Layer* 1355) [Shuffle]        1.58           0.0075      0.1
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1242 + (Unnamed Layer* 1379) [Shuffle]        1.13           0.0054      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1243 + (Unnamed Layer* 1404) [Shuffle]        0.97           0.0046      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1244 + (Unnamed Layer* 1434) [Shuffle]        1.47           0.0071      0.1
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1248 + (Unnamed Layer* 1509) [Shuffle]        0.67           0.0032      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1249 + (Unnamed Layer* 1533) [Shuffle]        1.30           0.0062      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1250 + (Unnamed Layer* 1558) [Shuffle]        1.79           0.0086      0.1
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1251 + (Unnamed Layer* 1588) [Shuffle]        1.61           0.0077      0.1
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1255 + (Unnamed Layer* 1663) [Shuffle]        1.18           0.0057      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1256 + (Unnamed Layer* 1687) [Shuffle]        1.29           0.0062      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1257 + (Unnamed Layer* 1712) [Shuffle]        2.20           0.0105      0.1
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1258 + (Unnamed Layer* 1742) [Shuffle]        1.77           0.0085      0.1
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1262 + (Unnamed Layer* 1817) [Shuffle]        1.39           0.0066      0.0
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1263 + (Unnamed Layer* 1841) [Shuffle]        1.73           0.0083      0.1
+[05/26/2022-18:09:34] [I]                                                      onnx::MatMul_1264 + (Unnamed Layer* 1866) [Shuffle]        1.36           0.0065      0.0
+[05/26/2022-18:09:34] [I]                                                       Reformatting CopyNode for Input Tensor 0 to Conv_0       23.23           0.1112      0.8
+[05/26/2022-18:09:34] [I]                                                                                                   Conv_0     1256.58           6.0123     44.3
+[05/26/2022-18:09:34] [I]                               Reformatting CopyNode for Input Tensor 0 to PWN(PWN(HardSigmoid_1), Mul_2)       17.06           0.0817      0.6
+[05/26/2022-18:09:34] [I]                                                                           PWN(PWN(HardSigmoid_1), Mul_2)       17.33           0.0829      0.6
+[05/26/2022-18:09:34] [I]                                                                  Conv_3 + PWN(PWN(HardSigmoid_4), Mul_5)       15.41           0.0737      0.5
+[05/26/2022-18:09:34] [I]                                                                  Conv_6 + PWN(PWN(HardSigmoid_7), Mul_8)        9.83           0.0470      0.3
+[05/26/2022-18:09:34] [I]                                                                                                   Conv_9        8.07           0.0386      0.3
+[05/26/2022-18:09:34] [I]                                    Reformatting CopyNode for Input Tensor 0 to Reshape_17 + Transpose_18        2.53           0.0121      0.1
+[05/26/2022-18:09:34] [I]                                                                                Reshape_17 + Transpose_18        4.95           0.0237      0.2
+[05/26/2022-18:09:34] [I]                                                                                                MatMul_25        4.29           0.0205      0.2
+[05/26/2022-18:09:34] [I]                                                               Flatten_26 + (Unnamed Layer* 38) [Shuffle]        0.41           0.0020      0.0
+[05/26/2022-18:09:34] [I]                                                                                    BatchNormalization_27        4.59           0.0220      0.2
+[05/26/2022-18:09:34] [I]                                                  (Unnamed Layer* 40) [Shuffle] + Reshape_29 + Reshape_33        0.46           0.0022      0.0
+[05/26/2022-18:09:34] [I]                                                                                             Transpose_35        3.96           0.0189      0.1
+[05/26/2022-18:09:34] [I]                                                                                             Transpose_37        3.73           0.0179      0.1
+[05/26/2022-18:09:34] [I]                                                                                             Transpose_36        4.20           0.0201      0.1
+[05/26/2022-18:09:34] [I]                                                                                                MatMul_38       11.13           0.0533      0.4
+[05/26/2022-18:09:34] [I]                                                   onnx::Mul_387 + (Unnamed Layer* 69) [Shuffle] + Mul_40       13.95           0.0667      0.5
+[05/26/2022-18:09:34] [I]                                                   onnx::Add_389 + (Unnamed Layer* 72) [Shuffle] + Add_42       14.92           0.0714      0.5
+[05/26/2022-18:09:34] [I]                                                                            (Unnamed Layer* 83) [Shuffle]        0.46           0.0022      0.0
+[05/26/2022-18:09:34] [I]                                                                                               Softmax_43       35.96           0.1721      1.3
+[05/26/2022-18:09:34] [I]                                                                            (Unnamed Layer* 85) [Shuffle]        0.37           0.0018      0.0
+[05/26/2022-18:09:34] [I]                                                                                                MatMul_44       13.65           0.0653      0.5
+[05/26/2022-18:09:34] [I]                                                                                Transpose_45 + Reshape_49        3.66           0.0175      0.1
+[05/26/2022-18:09:34] [I]                                                                         PWN(PWN(HardSigmoid_50), Mul_51)        2.23           0.0107      0.1
+[05/26/2022-18:09:34] [I]                                                                                                MatMul_52        5.33           0.0255      0.2
+[05/26/2022-18:09:34] [I]                                                              Flatten_53 + (Unnamed Layer* 112) [Shuffle]        0.47           0.0023      0.0
+[05/26/2022-18:09:34] [I]                                                                                    BatchNormalization_54        2.73           0.0130      0.1
+[05/26/2022-18:09:34] [I]                                                              (Unnamed Layer* 114) [Shuffle] + Reshape_56        0.46           0.0022      0.0
+[05/26/2022-18:09:34] [I]                                                                                                   Add_57        4.55           0.0217      0.2
+[05/26/2022-18:09:34] [I]                                                                                                MatMul_58        5.56           0.0266      0.2
+[05/26/2022-18:09:34] [I]                                                              Flatten_59 + (Unnamed Layer* 135) [Shuffle]        0.68           0.0033      0.0
+[05/26/2022-18:09:34] [I]                                                                                    BatchNormalization_60        5.79           0.0277      0.2
+[05/26/2022-18:09:34] [I]                                                              (Unnamed Layer* 137) [Shuffle] + Reshape_62        0.67           0.0032      0.0
+[05/26/2022-18:09:34] [I]                                                                         PWN(PWN(HardSigmoid_63), Mul_64)        4.76           0.0228      0.2
+[05/26/2022-18:09:34] [I]                                                                                                MatMul_65        4.73           0.0226      0.2
+[05/26/2022-18:09:34] [I]                                                              Flatten_66 + (Unnamed Layer* 159) [Shuffle]        0.73           0.0035      0.0
+[05/26/2022-18:09:34] [I]                                                                                    BatchNormalization_67        2.81           0.0134      0.1
+[05/26/2022-18:09:34] [I]                                                              (Unnamed Layer* 161) [Shuffle] + Reshape_69        0.62           0.0030      0.0
+[05/26/2022-18:09:34] [I]                                                                                                   Add_70        3.72           0.0178      0.1
+[05/26/2022-18:09:34] [I]                                                                                                MatMul_77        4.60           0.0220      0.2
+[05/26/2022-18:09:34] [I]                                                              Flatten_78 + (Unnamed Layer* 188) [Shuffle]        1.18           0.0057      0.0
+[05/26/2022-18:09:34] [I]                                                                                    BatchNormalization_79        6.20           0.0297      0.2
+[05/26/2022-18:09:34] [I]                                                 (Unnamed Layer* 190) [Shuffle] + Reshape_81 + Reshape_85        0.72           0.0034      0.0
+[05/26/2022-18:09:34] [I]                                                                                             Transpose_87        3.17           0.0152      0.1
+[05/26/2022-18:09:34] [I]                                                                                             Transpose_89        3.68           0.0176      0.1
+[05/26/2022-18:09:34] [I]                                                                                             Transpose_88        4.58           0.0219      0.2
+[05/26/2022-18:09:34] [I]                                                                                                MatMul_90       11.13           0.0532      0.4
+[05/26/2022-18:09:34] [I]                                                  onnx::Mul_451 + (Unnamed Layer* 219) [Shuffle] + Mul_92       13.96           0.0668      0.5
+[05/26/2022-18:09:34] [I]                                                  onnx::Add_453 + (Unnamed Layer* 222) [Shuffle] + Add_94       14.49           0.0693      0.5
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 233) [Shuffle]        0.37           0.0018      0.0
+[05/26/2022-18:09:34] [I]                                                                                               Softmax_95       35.89           0.1717      1.3
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 235) [Shuffle]        0.39           0.0019      0.0
+[05/26/2022-18:09:34] [I]                                                                                                MatMul_96       13.60           0.0651      0.5
+[05/26/2022-18:09:34] [I]                                                                               Transpose_97 + Reshape_101        4.40           0.0211      0.2
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_102), Mul_103)        1.68           0.0080      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_104        3.17           0.0152      0.1
+[05/26/2022-18:09:34] [I]                                                             Flatten_105 + (Unnamed Layer* 262) [Shuffle]        0.40           0.0019      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_106        2.79           0.0134      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 264) [Shuffle] + Reshape_108        0.45           0.0022      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_109        4.62           0.0221      0.2
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_110        5.15           0.0246      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_111 + (Unnamed Layer* 285) [Shuffle]        0.56           0.0027      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_112        5.10           0.0244      0.2
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 287) [Shuffle] + Reshape_114        0.69           0.0033      0.0
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_115), Mul_116)        4.87           0.0233      0.2
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_117        4.60           0.0220      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_118 + (Unnamed Layer* 309) [Shuffle]        0.90           0.0043      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_119        2.88           0.0138      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 311) [Shuffle] + Reshape_121        0.65           0.0031      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_122        3.34           0.0160      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_129        9.38           0.0449      0.3
+[05/26/2022-18:09:34] [I]                                                                                              Reshape_149        0.56           0.0027      0.0
+[05/26/2022-18:09:34] [I]                                                             Flatten_130 + (Unnamed Layer* 338) [Shuffle]        0.61           0.0029      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_131       11.94           0.0571      0.4
+[05/26/2022-18:09:34] [I]                                               (Unnamed Layer* 340) [Shuffle] + Reshape_133 + Reshape_137        0.41           0.0019      0.0
+[05/26/2022-18:09:34] [I]                                                                                                Slice_154        2.44           0.0117      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_173        5.75           0.0275      0.2
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_139        9.75           0.0467      0.3
+[05/26/2022-18:09:34] [I]                                                                                                Slice_159        1.73           0.0083      0.1
+[05/26/2022-18:09:34] [I]                                                                                              Reshape_163        0.74           0.0035      0.0
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_164        2.47           0.0118      0.1
+[05/26/2022-18:09:34] [I]                                                             Flatten_165 + (Unnamed Layer* 448) [Shuffle]        0.50           0.0024      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_166        1.91           0.0091      0.1
+[05/26/2022-18:09:34] [I]                               (Unnamed Layer* 450) [Shuffle] + Reshape_168 + Reshape_171 + Transpose_172        2.24           0.0107      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_174       12.52           0.0599      0.4
+[05/26/2022-18:09:34] [I]                                                 onnx::Mul_559 + (Unnamed Layer* 464) [Shuffle] + Mul_176        7.30           0.0349      0.3
+[05/26/2022-18:09:34] [I]                                                 onnx::Add_561 + (Unnamed Layer* 467) [Shuffle] + Add_178        7.57           0.0362      0.3
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 478) [Shuffle]        0.43           0.0021      0.0
+[05/26/2022-18:09:34] [I]                                                                                              Softmax_179       18.69           0.0894      0.7
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 480) [Shuffle]        0.38           0.0018      0.0
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_180       20.32           0.0972      0.7
+[05/26/2022-18:09:34] [I]                                                                              Transpose_181 + Reshape_184        3.72           0.0178      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_185), Mul_186)        1.76           0.0084      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_187        5.52           0.0264      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_188 + (Unnamed Layer* 508) [Shuffle]        0.60           0.0029      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_189        1.90           0.0091      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 510) [Shuffle] + Reshape_191        1.86           0.0089      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_192        6.46           0.0309      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_193 + (Unnamed Layer* 531) [Shuffle]        0.73           0.0035      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_194        3.06           0.0147      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 533) [Shuffle] + Reshape_196        1.06           0.0051      0.0
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_197), Mul_198)        5.12           0.0245      0.2
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_199        5.89           0.0282      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_200 + (Unnamed Layer* 556) [Shuffle]        1.33           0.0064      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_201        3.19           0.0153      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 558) [Shuffle] + Reshape_203        0.90           0.0043      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_204        3.33           0.0159      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_211        4.76           0.0228      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_212 + (Unnamed Layer* 586) [Shuffle]        1.43           0.0068      0.1
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_213        4.90           0.0235      0.2
+[05/26/2022-18:09:34] [I]                                               (Unnamed Layer* 588) [Shuffle] + Reshape_215 + Reshape_219        1.40           0.0067      0.0
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_221        3.31           0.0159      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_223        3.03           0.0145      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_222        3.63           0.0174      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_224        7.71           0.0369      0.3
+[05/26/2022-18:09:34] [I]                                                 onnx::Mul_623 + (Unnamed Layer* 617) [Shuffle] + Mul_226        2.64           0.0126      0.1
+[05/26/2022-18:09:34] [I]                                                 onnx::Add_625 + (Unnamed Layer* 620) [Shuffle] + Add_228        2.58           0.0123      0.1
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 631) [Shuffle]        0.62           0.0030      0.0
+[05/26/2022-18:09:34] [I]                                                                                              Softmax_229        7.42           0.0355      0.3
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 633) [Shuffle]        0.54           0.0026      0.0
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_230        4.43           0.0212      0.2
+[05/26/2022-18:09:34] [I]                                                                              Transpose_231 + Reshape_235        3.01           0.0144      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_236), Mul_237)        1.91           0.0092      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_238        4.95           0.0237      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_239 + (Unnamed Layer* 661) [Shuffle]        1.85           0.0088      0.1
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_240        3.41           0.0163      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 663) [Shuffle] + Reshape_242        3.69           0.0176      0.1
+[05/26/2022-18:09:34] [I]                                                                                                  Add_243        3.60           0.0172      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_244        4.79           0.0229      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_245 + (Unnamed Layer* 685) [Shuffle]        0.89           0.0042      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_246        4.03           0.0193      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 687) [Shuffle] + Reshape_248        1.18           0.0057      0.0
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_249), Mul_250)        3.29           0.0157      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_251        8.18           0.0391      0.3
+[05/26/2022-18:09:34] [I]                                                             Flatten_252 + (Unnamed Layer* 710) [Shuffle]        1.07           0.0051      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_253        4.45           0.0213      0.2
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 712) [Shuffle] + Reshape_255        0.99           0.0047      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_256        3.94           0.0188      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_263        4.85           0.0232      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_264 + (Unnamed Layer* 740) [Shuffle]        2.19           0.0105      0.1
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_265        5.93           0.0284      0.2
+[05/26/2022-18:09:34] [I]                                               (Unnamed Layer* 742) [Shuffle] + Reshape_267 + Reshape_271        1.72           0.0082      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_273        3.37           0.0161      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_275        3.78           0.0181      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_274        3.93           0.0188      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_276        7.41           0.0355      0.3
+[05/26/2022-18:09:34] [I]                                                 onnx::Mul_687 + (Unnamed Layer* 771) [Shuffle] + Mul_278        2.58           0.0124      0.1
+[05/26/2022-18:09:34] [I]                                                 onnx::Add_689 + (Unnamed Layer* 774) [Shuffle] + Add_280        3.26           0.0156      0.1
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 785) [Shuffle]        0.93           0.0044      0.0
+[05/26/2022-18:09:34] [I]                                                                                              Softmax_281        7.85           0.0376      0.3
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 787) [Shuffle]        0.72           0.0035      0.0
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_282        4.56           0.0218      0.2
+[05/26/2022-18:09:34] [I]                                                                              Transpose_283 + Reshape_287        2.61           0.0125      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_288), Mul_289)        2.02           0.0097      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_290        5.47           0.0262      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_291 + (Unnamed Layer* 815) [Shuffle]        2.38           0.0114      0.1
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_292        2.52           0.0121      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 817) [Shuffle] + Reshape_294        2.96           0.0141      0.1
+[05/26/2022-18:09:34] [I]                                                                                                  Add_295        3.86           0.0185      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_296        5.49           0.0262      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_297 + (Unnamed Layer* 839) [Shuffle]        1.14           0.0055      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_298        4.09           0.0196      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 841) [Shuffle] + Reshape_300        1.59           0.0076      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_301), Mul_302)        4.06           0.0194      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_303        7.19           0.0344      0.3
+[05/26/2022-18:09:34] [I]                                                             Flatten_304 + (Unnamed Layer* 864) [Shuffle]        0.67           0.0032      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_305        3.33           0.0160      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 866) [Shuffle] + Reshape_307        1.03           0.0049      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_308        3.84           0.0184      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_315        5.08           0.0243      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_316 + (Unnamed Layer* 894) [Shuffle]        1.35           0.0065      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_317        5.35           0.0256      0.2
+[05/26/2022-18:09:34] [I]                                               (Unnamed Layer* 896) [Shuffle] + Reshape_319 + Reshape_323        1.63           0.0078      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_325        2.94           0.0141      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_327        3.24           0.0155      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_326        3.83           0.0183      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_328        7.52           0.0360      0.3
+[05/26/2022-18:09:34] [I]                                                 onnx::Mul_751 + (Unnamed Layer* 925) [Shuffle] + Mul_330        2.57           0.0123      0.1
+[05/26/2022-18:09:34] [I]                                                 onnx::Add_753 + (Unnamed Layer* 928) [Shuffle] + Add_332        2.67           0.0128      0.1
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 939) [Shuffle]        0.79           0.0038      0.0
+[05/26/2022-18:09:34] [I]                                                                                              Softmax_333        7.28           0.0348      0.3
+[05/26/2022-18:09:34] [I]                                                                           (Unnamed Layer* 941) [Shuffle]        0.51           0.0024      0.0
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_334        4.33           0.0207      0.2
+[05/26/2022-18:09:34] [I]                                                                              Transpose_335 + Reshape_339        2.53           0.0121      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_340), Mul_341)        7.49           0.0359      0.3
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_342        5.85           0.0280      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_343 + (Unnamed Layer* 969) [Shuffle]        1.79           0.0086      0.1
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_344        2.45           0.0117      0.1
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 971) [Shuffle] + Reshape_346        2.87           0.0137      0.1
+[05/26/2022-18:09:34] [I]                                                                                                  Add_347        3.45           0.0165      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_348        4.90           0.0235      0.2
+[05/26/2022-18:09:34] [I]                                                             Flatten_349 + (Unnamed Layer* 993) [Shuffle]        1.36           0.0065      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_350        4.33           0.0207      0.2
+[05/26/2022-18:09:34] [I]                                                             (Unnamed Layer* 995) [Shuffle] + Reshape_352        1.14           0.0054      0.0
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_353), Mul_354)        3.43           0.0164      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_355        7.82           0.0374      0.3
+[05/26/2022-18:09:34] [I]                                                            Flatten_356 + (Unnamed Layer* 1018) [Shuffle]        0.93           0.0044      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_357        3.90           0.0186      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1020) [Shuffle] + Reshape_359        1.15           0.0055      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_360        3.66           0.0175      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_367        8.78           0.0420      0.3
+[05/26/2022-18:09:34] [I]                                                                                              Reshape_387        0.50           0.0024      0.0
+[05/26/2022-18:09:34] [I]                                                            Flatten_368 + (Unnamed Layer* 1048) [Shuffle]        0.54           0.0026      0.0
+[05/26/2022-18:09:34] [I]                                       Reformatting CopyNode for Input Tensor 0 to BatchNormalization_369        0.94           0.0045      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_369        6.83           0.0327      0.2
+[05/26/2022-18:09:34] [I]  Reformatting CopyNode for Input Tensor 0 to (Unnamed Layer* 1050) [Shuffle] + Reshape_371 + Reshape_375        8.79           0.0421      0.3
+[05/26/2022-18:09:34] [I]                                              (Unnamed Layer* 1050) [Shuffle] + Reshape_371 + Reshape_375        0.47           0.0023      0.0
+[05/26/2022-18:09:34] [I]                                                                                                Slice_392        2.35           0.0113      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_411        4.56           0.0218      0.2
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_377        9.46           0.0453      0.3
+[05/26/2022-18:09:34] [I]                                                                                                Slice_397        2.03           0.0097      0.1
+[05/26/2022-18:09:34] [I]                                                                                              Reshape_401        0.53           0.0025      0.0
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_402        3.67           0.0176      0.1
+[05/26/2022-18:09:34] [I]                Reformatting CopyNode for Input Tensor 0 to Flatten_403 + (Unnamed Layer* 1158) [Shuffle]        2.15           0.0103      0.1
+[05/26/2022-18:09:34] [I]                                                            Flatten_403 + (Unnamed Layer* 1158) [Shuffle]        0.88           0.0042      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_404        7.29           0.0349      0.3
+[05/26/2022-18:09:34] [I]                              (Unnamed Layer* 1160) [Shuffle] + Reshape_406 + Reshape_409 + Transpose_410        2.70           0.0129      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_412        7.52           0.0360      0.3
+[05/26/2022-18:09:34] [I]                                                onnx::Mul_859 + (Unnamed Layer* 1174) [Shuffle] + Mul_414        2.02           0.0097      0.1
+[05/26/2022-18:09:34] [I]                                                onnx::Add_861 + (Unnamed Layer* 1177) [Shuffle] + Add_416        2.36           0.0113      0.1
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1188) [Shuffle]        0.86           0.0041      0.0
+[05/26/2022-18:09:34] [I]                                                                                              Softmax_417        6.84           0.0327      0.2
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1190) [Shuffle]        0.63           0.0030      0.0
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_418       11.46           0.0548      0.4
+[05/26/2022-18:09:34] [I]                                  Reformatting CopyNode for Input Tensor 0 to Transpose_419 + Reshape_422        3.36           0.0161      0.1
+[05/26/2022-18:09:34] [I]                                                                              Transpose_419 + Reshape_422        2.95           0.0141      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_423), Mul_424)        2.15           0.0103      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_425        6.27           0.0300      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_426 + (Unnamed Layer* 1218) [Shuffle]        0.62           0.0030      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_427        5.44           0.0260      0.2
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1220) [Shuffle] + Reshape_429        0.88           0.0042      0.0
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_430        5.75           0.0275      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_431 + (Unnamed Layer* 1241) [Shuffle]        0.88           0.0042      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_432        3.19           0.0153      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1243) [Shuffle] + Reshape_434        1.37           0.0066      0.0
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_435), Mul_436)        3.40           0.0163      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_437        7.32           0.0350      0.3
+[05/26/2022-18:09:34] [I]                                                            Flatten_438 + (Unnamed Layer* 1266) [Shuffle]        0.70           0.0033      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_439        3.73           0.0178      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1268) [Shuffle] + Reshape_441        0.81           0.0039      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_442        2.78           0.0133      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_449        6.90           0.0330      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_450 + (Unnamed Layer* 1296) [Shuffle]        2.75           0.0131      0.1
+[05/26/2022-18:09:34] [I]                                       Reformatting CopyNode for Input Tensor 0 to BatchNormalization_451        1.41           0.0068      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_451        2.84           0.0136      0.1
+[05/26/2022-18:09:34] [I]  Reformatting CopyNode for Input Tensor 0 to (Unnamed Layer* 1298) [Shuffle] + Reshape_453 + Reshape_457        3.86           0.0185      0.1
+[05/26/2022-18:09:34] [I]                                              (Unnamed Layer* 1298) [Shuffle] + Reshape_453 + Reshape_457        1.07           0.0051      0.0
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_459        2.91           0.0139      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_461        4.92           0.0236      0.2
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_460        3.87           0.0185      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_462        4.13           0.0198      0.1
+[05/26/2022-18:09:34] [I]                                                onnx::Mul_923 + (Unnamed Layer* 1327) [Shuffle] + Mul_464        2.82           0.0135      0.1
+[05/26/2022-18:09:34] [I]                                                onnx::Add_925 + (Unnamed Layer* 1330) [Shuffle] + Add_466        3.45           0.0165      0.1
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1341) [Shuffle]        2.53           0.0121      0.1
+[05/26/2022-18:09:34] [I]                                                                                              Softmax_467        4.68           0.0224      0.2
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1343) [Shuffle]        2.16           0.0103      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_468        5.11           0.0245      0.2
+[05/26/2022-18:09:34] [I]                                                                              Transpose_469 + Reshape_473        3.05           0.0146      0.1
+[05/26/2022-18:09:34] [I]                           Reformatting CopyNode for Input Tensor 0 to PWN(PWN(HardSigmoid_474), Mul_475)        3.08           0.0147      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_474), Mul_475)        2.68           0.0128      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_476        4.85           0.0232      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_477 + (Unnamed Layer* 1371) [Shuffle]        1.18           0.0056      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_478        3.73           0.0179      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1373) [Shuffle] + Reshape_480        1.20           0.0058      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_481        2.77           0.0133      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_482        7.48           0.0358      0.3
+[05/26/2022-18:09:34] [I]                                                            Flatten_483 + (Unnamed Layer* 1395) [Shuffle]        0.90           0.0043      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_484        3.68           0.0176      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1397) [Shuffle] + Reshape_486        1.63           0.0078      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_487), Mul_488)        3.30           0.0158      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_489        6.52           0.0312      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_490 + (Unnamed Layer* 1420) [Shuffle]        0.96           0.0046      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_491        4.27           0.0204      0.2
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1422) [Shuffle] + Reshape_493        1.05           0.0050      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_494        2.78           0.0133      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_501        6.04           0.0289      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_502 + (Unnamed Layer* 1450) [Shuffle]        2.18           0.0104      0.1
+[05/26/2022-18:09:34] [I]                                       Reformatting CopyNode for Input Tensor 0 to BatchNormalization_503        1.45           0.0070      0.1
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_503        3.10           0.0148      0.1
+[05/26/2022-18:09:34] [I]  Reformatting CopyNode for Input Tensor 0 to (Unnamed Layer* 1452) [Shuffle] + Reshape_505 + Reshape_509        4.05           0.0194      0.1
+[05/26/2022-18:09:34] [I]                                              (Unnamed Layer* 1452) [Shuffle] + Reshape_505 + Reshape_509        1.31           0.0062      0.0
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_511        2.83           0.0135      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_513        5.24           0.0251      0.2
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_512        3.27           0.0156      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_514        4.51           0.0216      0.2
+[05/26/2022-18:09:34] [I]                                                onnx::Mul_987 + (Unnamed Layer* 1481) [Shuffle] + Mul_516        2.78           0.0133      0.1
+[05/26/2022-18:09:34] [I]                                                onnx::Add_989 + (Unnamed Layer* 1484) [Shuffle] + Add_518        2.85           0.0136      0.1
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1495) [Shuffle]        2.06           0.0099      0.1
+[05/26/2022-18:09:34] [I]                                                                                              Softmax_519        4.83           0.0231      0.2
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1497) [Shuffle]        1.81           0.0087      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_520        4.69           0.0224      0.2
+[05/26/2022-18:09:34] [I]                                                                              Transpose_521 + Reshape_525        4.09           0.0196      0.1
+[05/26/2022-18:09:34] [I]                           Reformatting CopyNode for Input Tensor 0 to PWN(PWN(HardSigmoid_526), Mul_527)        2.69           0.0129      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_526), Mul_527)        2.89           0.0138      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_528        4.89           0.0234      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_529 + (Unnamed Layer* 1525) [Shuffle]        1.31           0.0063      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_530        3.44           0.0165      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1527) [Shuffle] + Reshape_532        1.27           0.0061      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_533        3.61           0.0173      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_534        7.17           0.0343      0.3
+[05/26/2022-18:09:34] [I]                                                            Flatten_535 + (Unnamed Layer* 1549) [Shuffle]        0.95           0.0046      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_536        4.02           0.0192      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1551) [Shuffle] + Reshape_538        1.44           0.0069      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_539), Mul_540)        3.13           0.0150      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_541        7.56           0.0362      0.3
+[05/26/2022-18:09:34] [I]                                                            Flatten_542 + (Unnamed Layer* 1574) [Shuffle]        0.89           0.0042      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_543        4.22           0.0202      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1576) [Shuffle] + Reshape_545        0.90           0.0043      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_546        2.82           0.0135      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_553        6.00           0.0287      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_554 + (Unnamed Layer* 1604) [Shuffle]        2.27           0.0108      0.1
+[05/26/2022-18:09:34] [I]                                       Reformatting CopyNode for Input Tensor 0 to BatchNormalization_555        1.14           0.0055      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_555        3.01           0.0144      0.1
+[05/26/2022-18:09:34] [I]  Reformatting CopyNode for Input Tensor 0 to (Unnamed Layer* 1606) [Shuffle] + Reshape_557 + Reshape_561        3.87           0.0185      0.1
+[05/26/2022-18:09:34] [I]                                              (Unnamed Layer* 1606) [Shuffle] + Reshape_557 + Reshape_561        1.06           0.0051      0.0
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_563        2.84           0.0136      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_565        5.29           0.0253      0.2
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_564        2.98           0.0142      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_566        6.24           0.0299      0.2
+[05/26/2022-18:09:34] [I]                                               onnx::Mul_1051 + (Unnamed Layer* 1635) [Shuffle] + Mul_568        2.38           0.0114      0.1
+[05/26/2022-18:09:34] [I]                                               onnx::Add_1053 + (Unnamed Layer* 1638) [Shuffle] + Add_570        2.77           0.0133      0.1
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1649) [Shuffle]        2.31           0.0111      0.1
+[05/26/2022-18:09:34] [I]                                                                                              Softmax_571        4.98           0.0238      0.2
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1651) [Shuffle]        1.73           0.0083      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_572        4.55           0.0218      0.2
+[05/26/2022-18:09:34] [I]                                                                              Transpose_573 + Reshape_577        3.42           0.0164      0.1
+[05/26/2022-18:09:34] [I]                           Reformatting CopyNode for Input Tensor 0 to PWN(PWN(HardSigmoid_578), Mul_579)        2.76           0.0132      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_578), Mul_579)        2.74           0.0131      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_580        4.88           0.0234      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_581 + (Unnamed Layer* 1679) [Shuffle]        1.39           0.0067      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_582        3.70           0.0177      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1681) [Shuffle] + Reshape_584        1.34           0.0064      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_585        2.86           0.0137      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_586        7.34           0.0351      0.3
+[05/26/2022-18:09:34] [I]                                                            Flatten_587 + (Unnamed Layer* 1703) [Shuffle]        1.09           0.0052      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_588        3.34           0.0160      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1705) [Shuffle] + Reshape_590        1.55           0.0074      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_591), Mul_592)        3.47           0.0166      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_593        6.92           0.0331      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_594 + (Unnamed Layer* 1728) [Shuffle]        1.09           0.0052      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_595        3.84           0.0184      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1730) [Shuffle] + Reshape_597        0.83           0.0040      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_598        3.16           0.0151      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_605        6.19           0.0296      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_606 + (Unnamed Layer* 1758) [Shuffle]        2.43           0.0116      0.1
+[05/26/2022-18:09:34] [I]                                       Reformatting CopyNode for Input Tensor 0 to BatchNormalization_607        1.15           0.0055      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_607        3.18           0.0152      0.1
+[05/26/2022-18:09:34] [I]  Reformatting CopyNode for Input Tensor 0 to (Unnamed Layer* 1760) [Shuffle] + Reshape_609 + Reshape_613        3.61           0.0173      0.1
+[05/26/2022-18:09:34] [I]                                              (Unnamed Layer* 1760) [Shuffle] + Reshape_609 + Reshape_613        1.29           0.0062      0.0
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_615        2.91           0.0139      0.1
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_617        4.78           0.0229      0.2
+[05/26/2022-18:09:34] [I]                                                                                            Transpose_616        3.30           0.0158      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_618        4.33           0.0207      0.2
+[05/26/2022-18:09:34] [I]                                               onnx::Mul_1115 + (Unnamed Layer* 1789) [Shuffle] + Mul_620        2.97           0.0142      0.1
+[05/26/2022-18:09:34] [I]                                               onnx::Add_1117 + (Unnamed Layer* 1792) [Shuffle] + Add_622        3.08           0.0147      0.1
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1803) [Shuffle]        2.18           0.0104      0.1
+[05/26/2022-18:09:34] [I]                                                                                              Softmax_623        4.40           0.0211      0.2
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1805) [Shuffle]        1.75           0.0084      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_624        4.97           0.0238      0.2
+[05/26/2022-18:09:34] [I]                                                                              Transpose_625 + Reshape_629        3.38           0.0162      0.1
+[05/26/2022-18:09:34] [I]                           Reformatting CopyNode for Input Tensor 0 to PWN(PWN(HardSigmoid_630), Mul_631)        2.84           0.0136      0.1
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_630), Mul_631)        2.98           0.0143      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_632        4.48           0.0215      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_633 + (Unnamed Layer* 1833) [Shuffle]        1.31           0.0063      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_634        3.85           0.0184      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1835) [Shuffle] + Reshape_636        1.43           0.0068      0.1
+[05/26/2022-18:09:34] [I]                                                                                                  Add_637        3.18           0.0152      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_638        6.86           0.0328      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_639 + (Unnamed Layer* 1857) [Shuffle]        0.88           0.0042      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_640        3.21           0.0154      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1859) [Shuffle] + Reshape_642        1.28           0.0061      0.0
+[05/26/2022-18:09:34] [I]                                                                       PWN(PWN(HardSigmoid_643), Mul_644)        3.46           0.0166      0.1
+[05/26/2022-18:09:34] [I]                                                                                               MatMul_645        6.60           0.0316      0.2
+[05/26/2022-18:09:34] [I]                                                            Flatten_646 + (Unnamed Layer* 1882) [Shuffle]        0.96           0.0046      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_647        3.92           0.0188      0.1
+[05/26/2022-18:09:34] [I]                                                            (Unnamed Layer* 1884) [Shuffle] + Reshape_649        1.07           0.0051      0.0
+[05/26/2022-18:09:34] [I]                                                                                                  Add_650        2.72           0.0130      0.1
+[05/26/2022-18:09:34] [I]                                                                                           ReduceMean_651        3.77           0.0180      0.1
+[05/26/2022-18:09:34] [I]                                                                          (Unnamed Layer* 1895) [Shuffle]        1.38           0.0066      0.0
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_652        4.15           0.0198      0.1
+[05/26/2022-18:09:34] [I]                                                                                   BatchNormalization_654        2.78           0.0133      0.1
+[05/26/2022-18:09:34] [I]                                                     Reformatting CopyNode for Input Tensor 0 to Gemm_655        1.59           0.0076      0.1
+[05/26/2022-18:09:34] [I]                                                                                                 Gemm_655        4.06           0.0194      0.1
+[05/26/2022-18:09:34] [I]                                           Reformatting CopyNode for Input Tensor 0 to Gemm_653 + Add_656        1.37           0.0066      0.0
+[05/26/2022-18:09:34] [I]                                                                                       Gemm_653 + Add_656        4.85           0.0232      0.2
+[05/26/2022-18:09:34] [I]                                 Reformatting CopyNode for Input Tensor 0 to copied_squeeze_after_Add_656        3.10           0.0148      0.1
+[05/26/2022-18:09:34] [I]                                                                             copied_squeeze_after_Add_656        1.37           0.0066      0.0
+[05/26/2022-18:09:34] [I]                                           PWN(onnx::Div_1158 + (Unnamed Layer* 1932) [Shuffle], Div_658)        3.06           0.0146      0.1
+[05/26/2022-18:09:34] [I]                                                                                                    Total     2833.49          13.5574    100.0
+[05/26/2022-18:09:34] [I] 
+&&&& PASSED TensorRT.trtexec [TensorRT v8204] # trtexec --loadEngine=./trt_plans/model_128S.plan --shapes=input:16x3x224x224 --verbose --dumpProfile --exportLayerInfo=./detailed_report.txt

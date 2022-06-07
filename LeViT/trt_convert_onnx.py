@@ -1,5 +1,5 @@
 import levit 
-import torch
+import torch 
 
 def export_onnx_model(model_name,onnx_path = "./onnx_models/my_model_onnx.onnx"):
     input_tensor = torch.randn(16,3,224,224)
