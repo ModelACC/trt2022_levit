@@ -1,6 +1,6 @@
 # trt2022_levit
 ## 总述
-- 模型名称：LeViT
+- 模型名称：LeViT， https://github.com/facebookresearch/LeViT. 
 ## 原始模型
 ### 1. 模型简介
 - 我们小组选择优化的模型是来自于FaceBook Research的LeViT, 一种基于Transformer的用于快速推理图像分类的混合模型。该模型在推理精度上和运行速度上取得了较好的平衡。在同等精度之下，该模型相比于其他视觉Transformer的SOTA模型例如Visual Transformer，Bottleneck transformer和pyramid vision transformer能有近5倍的速度提升。相比于其他Token-to-token ViT模型，LeViT也有更少的参数和FLOPs。因此，LeViT是一个相对较为轻量化的模型，其较好的性能表现也保证了该模型较好的实用性。
@@ -12,5 +12,12 @@
 ### 3. 模型优化难点
 
 ## 优化过程
+### 1. Nsight System 性能分析
+- 如下图中的性能分析图和表所示，在运行期中，除了矩阵乘法运算和卷积运算之外，Softmax函数也占用了大量的运算时间。因此，在该函数运算上还有一定的优化空间，我们采取开发TensorRT Plugin的方式尝试去优化。
+![Nsight system分析结果](imgs/nsys_table.png)
+![Nsight fig](imgs/nsys_fig.png)
+### 2. Softmax Plugin 开发 
+- Softmax Kernel Function 来源于 https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/core/cuda/softmax.cuh 
+- 性能提升效果：原模型Softmax函数的输入形状为[batch_size, 3, 196, 196]，我们取batch_size = 8，分别对原生Softmax和Softmax Plugin进行测试。在不损失精度的条件下，Softmax Plugin的运行时间为原生Softmax的61%. 对于LeViT模型的试验，我们采用LeViT-384模型进行性能评估。模型输入形状为 [batch_size = 8, 3,224,224]，性能的提升约为3%
 ## 精度与加速效果
 ## Bug报告
