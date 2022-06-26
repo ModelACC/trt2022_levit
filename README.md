@@ -12,5 +12,12 @@
 ### 3. 模型优化难点
 
 ## 优化过程
+### 1. Nsight System 性能分析
+- 如下图中的性能分析图和表所示，在运行期中，除了矩阵乘法运算和卷积运算之外，Softmax函数也占用了大量的运算时间。因此，在该函数运算上还有一定的优化空间，我们采取开发TensorRT Plugin的方式尝试去优化。
+![Nsight system分析结果](imgs/nsys_table.png)
+![Nsight fig](imgs/nsys_fig.png)
+### 2. Softmax Plugin 开发 
+- Softmax Kernel Function 来源于 https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/core/cuda/softmax.cuh 
+- 性能提升效果：原模型Softmax函数的输入形状为[batch_size, 3, 196, 196]，我们取batch_size = 8，分别对原生Softmax和Softmax Plugin进行测试。在不损失精度的条件下，Softmax Plugin的运行时间为原生Softmax的61%. 对于LeViT模型的试验，我们采用LeViT-384模型进行性能评估。模型输入形状为 [batch_size = 8, 3,224,224]，性能的提升约为3%
 ## 精度与加速效果
 ## Bug报告
