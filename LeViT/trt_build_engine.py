@@ -1,36 +1,56 @@
-import levit 
-import levit_c 
-import torch 
 import tensorrt as trt 
-from cuda import cudart
 import numpy as np
+import calibrator
 
-def setup_engine(max_batch_size = 512,
-                 max_workspace_size_n = 4,
-                 onnx_path = "./onnx_models/levit_128_onnx.onnx",
-                 trtfile = "./trt_plans/my_model.plan",
-                 min_shape = (2,3,224,224),
-                 common_shape = (4,3,224,224),
-                 max_shape = (16,3,224,224)
+def setup_engine(max_workspace_size_n = 23,
+                 onnx_path = "./onnx_models/model_384.onnx",
+                 trtfile = "./trt_plans/model_384_int8_1_16_64_fastest.plan",
+                 min_shape = (1,3,224,224),
+                 common_shape = (16,3,224,224),
+                 max_shape = (64,3,224,224)
                  ):
-    logger = trt.Logger(trt.Logger.VERBOSE)
-    builder = trt.Builder(logger)
-    builder.max_batch_size = max_batch_size
+    # INT8 calibration
+    calibrationDataFilename = "./data.npy"
+    cacheFile = "./int8.cache"
+    calibrationCount = np.load(calibrationDataFilename).shape[0] // common_shape[0]
 
+    print("ONNX model:", onnx_path)
+    print("TensorRT model:", trtfile)
+    print("Calibration data:", calibrationDataFilename)
+
+    logger = trt.Logger()
+    builder = trt.Builder(logger)
     profile = builder.create_optimization_profile()
 
     config = builder.create_builder_config()
-    config.max_workspace_size = max_workspace_size_n<<30
+    config.max_workspace_size = max_workspace_size_n << 30
     config.set_flag(trt.BuilderFlag.FP16)
-
+    config.set_flag(trt.BuilderFlag.INT8)
+    config.set_flag(trt.BuilderFlag.STRICT_TYPES)
+    config.int8_calibrator = calibrator.MyCalibrator(
+        calibrationDataFilename,
+        calibrationCount,
+        [3, 224, 224],
+        cacheFile,
+        batchsize=common_shape[0],
+    )
     network = builder.create_network(1 << int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH))
-
     parser = trt.OnnxParser(network,logger)
     with open(onnx_path, "rb") as model:
         parser.parse(model.read())
 
+    for i, layer in enumerate(network):
+        if "Sigmoid" in layer.name:
+            print(layer.name)
+            layer.precision = trt.DataType.HALF
+
     input_tensor = network.get_input(0)
-    profile.set_shape(input_tensor.name,min_shape,common_shape,max_shape)
+    profile.set_shape(
+        input_tensor.name,
+        min_shape,
+        common_shape,
+        max_shape
+    )
     config.add_optimization_profile(profile)
 
     engineString = builder.build_serialized_network(network,config)
@@ -42,12 +62,6 @@ def setup_engine(max_batch_size = 512,
         f.write(engineString)
     return engineString, logger
 
-def load_engine(engine_path):
-    with open(engine_path,"rb") as f:
-        engine_data = f.read()
-    engine = trt.Runtime(trt.Logger(trt.Logger.VERBOSE)).deserialize_cuda_engine(engine_data)
-    return engine
-
 if __name__ == '__main__':
-    setup_engine(onnx_path = "./onnx_models/model_128S.onnx",trtfile = "./trt_plans/model_128S.plan")
+    setup_engine()
 

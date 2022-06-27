@@ -1,4 +1,8 @@
-LeViT/
+onnx_models/
+trt_plans/
+*.cache
+*.txt
+*.npy
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
