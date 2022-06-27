@@ -78,6 +78,7 @@ for device in ['cuda:0', 'cpu']:
         # ('levit.LeViT_128', 2048, 224),
         # ('levit.LeViT_192', 2048, 224),
         # ('levit.LeViT_256', 2048, 224),
+        ('levit.LeViT_256', 16, 224),
         ('levit.LeViT_384', 16, 224),
     ]:
         if device == 'cpu':
@@ -99,4 +100,4 @@ for device in ['cuda:0', 'cpu']:
         for i in range(1000):
             output = model(inputs)
         end = time.time()
-        print(end-start)
+        print(n, end-start)

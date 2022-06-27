@@ -30,6 +30,8 @@ def setup_engine(
     config.max_workspace_size = max_workspace_size_n << 30
     if enable_fp16:
         config.set_flag(trt.BuilderFlag.FP16)
+    else:
+        print("Do not enable FP16")
     if enable_int8:
         config.set_flag(trt.BuilderFlag.INT8)
         config.set_flag(trt.BuilderFlag.STRICT_TYPES)
@@ -40,6 +42,8 @@ def setup_engine(
             cacheFile,
             batchsize=common_shape[0],
         )
+    else:
+        print("DO not enable INT8")
     network = builder.create_network(1 << int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH))
     parser = trt.OnnxParser(network,logger)
     with open(onnx_path, "rb") as model:
