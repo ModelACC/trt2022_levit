@@ -8,10 +8,78 @@
 
 - 运行softmax plugin构建和测速脚本：
   
-  ```commandline
+  ```shell
   cd LeViT 
   ./build_engine_run_plugin.sh
   ```
+
+- 构造TensorRT引擎：
+
+```shell
+cd LeViT
+# Conver pytorch model to onnx model.
+# MODEL can be one of 128S, 128, 192, 256, 384
+# For example, 384 means LeViT-384
+python3 trt_convert_onnx.py MODEL
+# build TensorRT engine
+python3 trt_build_engine.py --onnx-path ONNX_MODEL --engine-path ENGINE_PATH [--enable-fp16] [--enable-int8]
+```
+
+- 测试模型精度
+
+```shell
+python3 valid.py \
+--data-path IMAGENET_ROOT \
+--model MODEL_NAME \
+--type TYPE \
+--engine-path ENGINE_PATH
+```
+
+IMAGENET_ROOT: imagenet数据集的根目录。数据集目录需为以下储存格式：
+
+> IMAGENET_ROOT
+> 
+> ----| val
+> 
+> --------| n02089867
+> 
+> ------------| XXX.jpg
+> 
+> ------------| ......
+> 
+> --------| n02437616
+> 
+> ------------| YYY.jpg
+> 
+> ------------| ......
+> 
+> --------| ......
+
+MODEL_NAME：模型名字，可以为LeViT_384，LeViT_256等，具体参见原repo。
+
+TYPE： pytorch或者tensorrt，代表要测试的是PyTorch模型还是TensorRT模型。
+
+ENGINE_PATH：若TYPE为tensorrt，则还需要传入引擎文件。
+
+- 测试模型推理速度
+
+对于TensorRT模型，可以使用trtexec测速：
+
+```shell
+trtexec --loadEngine=ENGINE_PATH --shapes=input:16x3x224x224 --useSpinWait
+```
+
+对于PyTorch模型，使用python脚本文件测速：
+
+```shell
+python3 pytorch_speed_test.py
+```
+
+- 生成calibration数据集：
+
+```shell
+python3 generate_calibration_data.py --data-path IMAGENET_ROOT
+```
 
 ## 原始模型
 
@@ -48,11 +116,18 @@
 
 ## 精度与加速效果
 
-所有实验均在A10 GPU上进行。使用的模型为LeViT-384，batch大小为16，单张图片大小为3x224x224。
+所有实验均在A10 GPU上进行。batch大小为16，单张图片大小为3x224x224，有warmup。
 
-|                 | acc@1 | latency (ms) | Acceleration Ratio |
+| LeViT-384       | acc@1 | latency (ms) | Acceleration Ratio |
 | --------------- | ----- | ------------ | ------------------ |
 | Pytorch (GPU)   | 82.6  | 8.91         | x1                 |
 | TensorRT (FP32) | 82.6  | 8.28         | x1.08              |
 | TensorRT (FP16) | 82.6  | 5.38         | x1.66              |
 | TensorRT (INT8) | 76.0  | 5.05         | x1.76              |
+
+| LeViT-256       | acc@1 | latency (ms) | Acceleration Ratio |
+| --------------- | ----- | ------------ | ------------------ |
+| Pytorch (GPU)   | 81.6  | 5.72         | x1                 |
+| TensorRT (FP32) | 81.6  | 5.40         | x1.06              |
+| TensorRT (FP16) | 81.5  | 3.42         | x1.67              |
+| TensorRT (INT8) | 81.2  | 3.52         | x1.63              |
