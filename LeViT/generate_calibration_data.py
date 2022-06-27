@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 def get_args_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data-path', default='/root/ljy/imagenet/', type=str,
+    parser.add_argument('--data-path', default='../../imagenet/', type=str,
                         help='dataset path')
     parser.add_argument('--data-set', default='IMNET', choices=['CIFAR', 'IMNET', 'INAT', 'INAT19'],
                         type=str, help='Image Net dataset path')

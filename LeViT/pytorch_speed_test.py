@@ -74,26 +74,16 @@ for device in ['cuda:0', 'cpu']:
         compute_throughput = compute_throughput_cuda
 
     for n, batch_size0, resolution in [
-        ('timm.models.resnet50', 1024, 224),
-        ('timm.models.deit_tiny_distilled_patch16_224', 2048, 224),
-        ('timm.models.deit_small_distilled_patch16_224', 2048, 224),
-        ('levit.LeViT_128S', 2048, 224),
-        ('levit.LeViT_128', 2048, 224),
-        ('levit.LeViT_192', 2048, 224),
-        ('levit.LeViT_256', 2048, 224),
-        ('levit.LeViT_384', 1024, 224),
-        ('timm.models.efficientnet_b0', 1024, 224),
-        ('timm.models.efficientnet_b1', 1024, 240),
-        ('timm.models.efficientnet_b2', 512, 260),
-        ('timm.models.efficientnet_b3', 512, 300),
-        ('timm.models.efficientnet_b4', 256, 380),
+        # ('levit.LeViT_128S', 2048, 224),
+        # ('levit.LeViT_128', 2048, 224),
+        # ('levit.LeViT_192', 2048, 224),
+        # ('levit.LeViT_256', 2048, 224),
+        ('levit.LeViT_384', 16, 224),
     ]:
-
         if device == 'cpu':
             batch_size = 16
         else:
-            # batch_size = batch_size0
-            batch_size = 4
+            batch_size = batch_size0
             torch.cuda.empty_cache()
         inputs = torch.randn(batch_size, 3, resolution,
                              resolution, device=device)
@@ -101,6 +91,12 @@ for device in ['cuda:0', 'cpu']:
         utils.replace_batchnorm(model)
         model.to(device)
         model.eval()
-        model = torch.jit.trace(model, inputs)
-        compute_throughput(n, model, device,
-                           batch_size, resolution=resolution)
+
+        for i in range(100):
+            output = model(inputs)
+
+        start = time.time()
+        for i in range(1000):
+            output = model(inputs)
+        end = time.time()
+        print(end-start)
