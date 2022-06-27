@@ -89,10 +89,11 @@ python3 generate_calibration_data.py --data-path IMAGENET_ROOT
 
 ### 2.模型结构
 
-- 模型的整体结构如图所示（图x）。输入的图片通过pyramid convolution 提取Embedding，随后输入到三个连续的stage中。最后一个stage的输出会作为分类器的输入，并得到图像分类的结果。
+- 模型的整体结构如下图所示。输入的图片通过pyramid convolution 提取Embedding，随后输入到三个连续的stage中。最后一个stage的输出会作为分类器的输入，并得到图像分类的结果。
 - 在数据输入到attention layer之前经过了一个pyramid convolution的处理。它由4个连续的3*3卷积核组成，且输出的feature map的维度逐级提升。该网络结构的目的在于提取patch embedding，并提高网络的精度。
 - 在每个stage中，输入数据会通过一系列的multi-head attention layer和用于残差连接的MLP Layer。其中，multi-head attention和一般常见的Transformer类模型中的Attention是基本相同的。但在LeViT的attention layer中并没有用到常见的positional embedding，而是在计算Attention的QK乘积是加入了一个Attention Bias充当positional embedding的作用。而MLP layer在本模型中是1*1的卷积层和一个batch normalization layer。根据论文，作者之所以没有采用常见的MLP block的原因是考虑到了常见的MLP通常会有更大的计算开销，从而采用了该模型中的结构用于残差连接。
 - 同时，在每两个stage之间，有一个multi-head shrink attention layer。该层会让输出的feature map的宽高减半，并提高其维度，从而起到下采样的作用。这一层的结构和LeViT中的Multi-head Attention是基本一致的，唯一不同的地方在于在Q Transformation之前对输入进行了下采样，从而最终得到了"shrink attention"的效果。
+    ![model fig](imgs/model_structure.png)
 
 ## 优化过程
 
