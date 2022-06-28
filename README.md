@@ -3,8 +3,29 @@
 ## 总述
 
 - 模型名称：LeViT， https://github.com/facebookresearch/LeViT. 
+- 我们进行了FP16和INT8的优化，并在使用Nsight System进行了针对性latency分析之后，选择对softmax进行手动编写插件优化。最终我们的模型可以取得相比于PyTorch推理1.7倍的加速。
 
-## 运行脚本
+## 运行步骤
+
+- 环境准备：
+
+拉取TensorRT Docker镜像： 
+
+```shell
+docker run --gpus all -it --rm nvcr.io/nvidia/tensorrt:22.05-py3
+```
+
+拉取代码repo：
+
+```shell
+git clone https://github.com/ModelACC/trt2022_levit.git
+```
+
+在代码目录下，安装python依赖：
+
+```shell
+pip3 install -r requirements.txt
+```
 
 - 运行softmax plugin构建和测速脚本：
   

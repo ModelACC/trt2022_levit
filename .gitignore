@@ -3,6 +3,7 @@ trt_plans/
 *.cache
 *.txt
 *.npy
+!requirements.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
