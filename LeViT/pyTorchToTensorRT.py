@@ -144,9 +144,11 @@ _, outputD0 = cudart.cudaMallocAsync(outputH0.nbytes, stream)
 cudart.cudaMemcpyAsync(inputD0, inputH0.ctypes.data, inputH0.nbytes, cudart.cudaMemcpyKind.cudaMemcpyHostToDevice, stream)
 for i in range(10):
     context.execute_async_v2([int(inputD0), int(outputD0)], stream)
+cudart.cudaDeviceSynchronize()
 start_time = time.time()
 for i in range(10):
     context.execute_async_v2([int(inputD0), int(outputD0)], stream)
+cudart.cudaDeviceSynchronize()
 end_time = time.time()
 cudart.cudaMemcpyAsync(outputH0.ctypes.data, outputD0, outputH0.nbytes, cudart.cudaMemcpyKind.cudaMemcpyDeviceToHost, stream)
 cudart.cudaStreamSynchronize(stream)
