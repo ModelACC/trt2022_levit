@@ -8,3 +8,5 @@ opencv-python
 onnx
 onnxoptimizer
 onnxruntime
+cuda-python
+onnx-graphsurgeon
