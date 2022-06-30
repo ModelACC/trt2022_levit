@@ -24,7 +24,7 @@ git clone https://github.com/ModelACC/trt2022_levit.git
 在代码目录下，安装python依赖：
 
 ```shell
-pip3 install -r requirements.txt
+pip3 install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu113
 ```
 
 - 运行softmax plugin构建和测速脚本：
