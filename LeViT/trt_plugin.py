@@ -145,9 +145,11 @@ def speed_test(trtFile,soFile,batch_size = 4, iterations = 10):
     cudart.cudaMemcpyAsync(inputD0, inputH0.ctypes.data, inputH0.nbytes, cudart.cudaMemcpyKind.cudaMemcpyHostToDevice, stream)
     for _ in range(10):
         context.execute_async_v2([int(inputD0), int(outputD0)], stream)
+    cudart.cudaDeviceSynchronize()
     start_t = time.time()
     for i in range(iterations):
         context.execute_async_v2([int(inputD0), int(outputD0)], stream)
+    cudart.cudaDeviceSynchronize()
     end_t = time.time()
     print(str((end_t - start_t)/iterations) + "s")
     cudart.cudaMemcpyAsync(outputH0.ctypes.data, outputD0, outputH0.nbytes, cudart.cudaMemcpyKind.cudaMemcpyDeviceToHost, stream)
