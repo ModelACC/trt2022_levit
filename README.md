@@ -1,9 +1,11 @@
 # trt2022_levit
 
-## 总述
+## 总述 Overview
 
 - 模型名称：LeViT， https://github.com/facebookresearch/LeViT. 
 - 我们进行了FP16和INT8的优化，并在使用Nsight System进行了针对性latency分析之后，选择对softmax进行手动编写插件优化。最终我们的模型可以取得相比于PyTorch推理1.7倍的加速。
+- Model Name: LeViT, https://github.com/facebookresearch/LeViT
+- We use FP16 and INT8 optimization, analysizing by Nsight System on latency. Write customed plugin for softmax, which reach 1.7x acceleration rate. 
 
 ## 运行步骤
 
